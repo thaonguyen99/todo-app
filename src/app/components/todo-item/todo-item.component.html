@@ -1,5 +1,5 @@
 <div class="flex mt-8 justify-between items-center">
-  <div class="flex items-center md:w-7/12">
+  <div class="flex items-center lg:w-7/12 w-2/5">
     <div>#{{ todo!.id }}</div>
     <div
       *ngIf="!editTodo; else inputBlock"
@@ -31,7 +31,7 @@
     </ng-template>
     <button
       (click)="completeToggle()"
-      class="btn mr-4 hover:bg-emerald-600 bg-emerald-300"
+      class="btn mr-4 hover:bg-emerald-500 bg-emerald-400"
     >
       Complete
     </button>
