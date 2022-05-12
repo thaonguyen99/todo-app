@@ -1,0 +1,33 @@
+<div class="flex mt-8 justify-between items-center">
+  <div class="flex items-center md:w-9/12">
+    <div>#{{ todo!.id }}</div>
+    <div
+      *ngIf="editTodo; else inputBlock"
+      (click)="completeToggle()"
+      class="cursor-pointer line-through mx-5"
+    >
+      {{ todo!.title }}
+    </div>
+    <ng-template #inputBlock>
+      <input
+        [(ngModel)]="todoInput"
+        type="text"
+        placeholder="Update title"
+        class="flex-1 outline-none bg-slate-100 m-4 py-2 px-8"
+      />
+    </ng-template>
+  </div>
+  <div>
+    <button
+      *ngIf="!editTodo; else elseBlock"
+      (click)="updateToggle()"
+      class="btn blue mr-4"
+    >
+      Edit
+    </button>
+    <ng-template #elseBlock>
+      <button (click)="updateTodo()" class="blue btn mr-4">Update</button>
+    </ng-template>
+    <button (click)="deleteTodo()" class="btn red">Delete</button>
+  </div>
+</div>
