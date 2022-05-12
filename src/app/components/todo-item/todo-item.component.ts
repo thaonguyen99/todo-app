@@ -28,13 +28,15 @@ export class TodoItemComponent implements OnInit {
 
   updateTodo() {
     this.editTodo = !this.editTodo;
-    this.store.dispatch(
-      actions.updateTodoAction({
-        id: this.todo!.id,
-        title: this.todoInput!,
-        complete: this.todo!.complete,
-      })
-    );
+    if (this.todoInput!.trim().length > 0) {
+      this.store.dispatch(
+        actions.updateTodoAction({
+          id: this.todo!.id,
+          title: this.todoInput!.trim(),
+          complete: this.todo!.complete,
+        })
+      );
+    }
   }
 
   deleteTodo() {
@@ -52,7 +54,7 @@ export class TodoItemComponent implements OnInit {
     this.store.dispatch(
       actions.updateTodoAction({
         id: this.todo!.id,
-        title: this.todoInput!,
+        title: this.todo!.title,
         complete: this.completeTodo,
       })
     );

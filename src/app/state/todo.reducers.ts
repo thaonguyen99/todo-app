@@ -7,7 +7,7 @@ export const initialTodoList: TodoTask[] = [];
 export const todoReducer = createReducer(
   initialTodoList,
   on(actions.addTodoAction, (state, todo) => {
-    return [...state, todo];
+    return [todo, ...state];
   }),
   on(actions.updateTodoAction, (state, todo) => {
     let tempTodo = state.findIndex((t) => t.id === todo.id);
@@ -17,7 +17,7 @@ export const todoReducer = createReducer(
     }
     return [...tempState];
   }),
-  on(actions.addTodoAction, (state, todo) => {
+  on(actions.deleteTodoAction, (state, todo) => {
     let todos = state.filter((t) => t.id !== todo.id);
     return [...todos];
   })

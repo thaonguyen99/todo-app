@@ -1,10 +1,10 @@
 <div class="flex mt-8 justify-between items-center">
-  <div class="flex items-center md:w-9/12">
+  <div class="flex items-center md:w-7/12">
     <div>#{{ todo!.id }}</div>
     <div
-      *ngIf="editTodo; else inputBlock"
-      (click)="completeToggle()"
-      class="cursor-pointer line-through mx-5"
+      *ngIf="!editTodo; else inputBlock"
+      class="line-through mx-5"
+      [ngClass]="{ 'line-through': completeTodo }"
     >
       {{ todo!.title }}
     </div>
@@ -22,12 +22,19 @@
       *ngIf="!editTodo; else elseBlock"
       (click)="updateToggle()"
       class="btn blue mr-4"
+      [disabled]="completeTodo"
     >
       Edit
     </button>
     <ng-template #elseBlock>
       <button (click)="updateTodo()" class="blue btn mr-4">Update</button>
     </ng-template>
+    <button
+      (click)="completeToggle()"
+      class="btn mr-4 hover:bg-emerald-600 bg-emerald-300"
+    >
+      Complete
+    </button>
     <button (click)="deleteTodo()" class="btn red">Delete</button>
   </div>
 </div>
