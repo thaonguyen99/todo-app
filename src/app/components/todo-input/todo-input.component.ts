@@ -24,8 +24,8 @@ export class TodoInputComponent implements OnInit {
       this.store.dispatch(
         actions.addTodoAction({
           id: this.todos!.length + 1,
-          complete: false,
           title: this.todoInput!.trim(),
+          complete: false,
         })
       );
     }
